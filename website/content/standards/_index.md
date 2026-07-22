@@ -23,4 +23,4 @@ The catalog is organised around the three initial focus areas (investigations an
 
 Status badges: <span class="obis-status obis-status-draft">Draft</span> &middot; <span class="obis-status obis-status-pr">Public Review</span> &middot; <span class="obis-status obis-status-published">Published</span> &middot; <span class="obis-status obis-status-superseded">Superseded</span> &middot; <span class="obis-status obis-status-withdrawn">Withdrawn</span>
 
-Source repository: [github.com/obi-standards/website](https://github.com/obi-standards/website).
+Source repository: [github.com/obi-standards/docs](https://github.com/obi-standards/docs).

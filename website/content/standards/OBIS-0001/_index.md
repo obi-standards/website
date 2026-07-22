@@ -7,7 +7,7 @@ status: "Draft"
 date: "2026-05-19"
 editor: "Bernhard Haslhofer"
 focus_area: "Process"
-discussions-to: "https://github.com/obi-standards/website/discussions/TBD"
+discussions-to: "https://github.com/obi-standards/docs/discussions/TBD"
 ---
 
 # OBIS-0001: OBIS Document Lifecycle
@@ -117,7 +117,7 @@ Documents MAY contain additional appendices, examples, and non-normative discuss
 
 ## 9. Source of truth
 
-OBIS documents are authored in Markdown in the `obi-standards/website` repository under `website/content/standards/OBIS-NNNN/`. The git history of that path is the document's editorial history. Documents in all lifecycle states reside on `main`; there are no long-lived draft branches. The rendered HTML at `obistandards.org` is derived; in the event of a discrepancy, the source repository prevails.
+OBIS documents are authored in Markdown in the `obi-standards/docs` repository under `website/content/standards/OBIS-NNNN/`. The git history of that path is the document's editorial history. Documents in all lifecycle states reside on `main`; there are no long-lived draft branches. The rendered HTML at `obistandards.org` is derived; in the event of a discrepancy, the source repository prevails.
 
 ## 10. Amendments to this document
 
