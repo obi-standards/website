@@ -7,7 +7,7 @@ status: "Draft"
 date: "2026-05-19"
 editor: "Bernhard Haslhofer"
 focus_area: "Terminology"
-discussions-to: "https://github.com/obi-standards/docs/discussions/TBD"
+discussions-to: "https://github.com/orgs/obi-standards/discussions/2"
 ---
 
 # OBIS-0002: Shared Taxonomies for Blockchain Intelligence

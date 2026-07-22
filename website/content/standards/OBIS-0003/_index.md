@@ -7,7 +7,7 @@ status: "Draft"
 date: "2026-05-19"
 editor: "Bernhard Haslhofer"
 focus_area: "Investigations and forensics"
-discussions-to: "https://github.com/obi-standards/docs/discussions/TBD"
+discussions-to: "https://github.com/orgs/obi-standards/discussions/3"
 ---
 
 # OBIS-0003: Attribution Tag Data Model and Exchange Format

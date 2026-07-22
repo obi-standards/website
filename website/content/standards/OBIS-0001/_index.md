@@ -7,7 +7,7 @@ status: "Draft"
 date: "2026-05-19"
 editor: "Bernhard Haslhofer"
 focus_area: "Process"
-discussions-to: "https://github.com/obi-standards/docs/discussions/TBD"
+discussions-to: "https://github.com/orgs/obi-standards/discussions/1"
 ---
 
 # OBIS-0001: OBIS Document Lifecycle
