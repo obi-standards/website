@@ -1,0 +1,11 @@
+{{- /*
+  Per-document license notice. Rendered after the article body and
+  before .book-footer (which contains prev/next navigation). Scoped to
+  individual standards documents (children of /standards/), excluding
+  the /standards/ section index itself.
+*/ -}}
+{{ if and (hasPrefix .RelPermalink "/standards/") (ne .RelPermalink "/standards/") }}
+<aside class="license-notice">
+  <p>This document is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Contributions are accepted under the OBIS royalty-free patent policy. See <a href="{{ "about/license/" | relURL }}">License</a>.</p>
+</aside>
+{{ end }}

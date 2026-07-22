@@ -1,0 +1,487 @@
+// IBM Plex via bunny.net Fonts (privacy-friendly CDN proxy, no Google tracking).
+// Loaded with display=swap so first paint is not blocked.
+@import url("https://fonts.bunny.net/css?family=ibm-plex-mono:400,600|ibm-plex-sans:400,400i,500,600|ibm-plex-serif:400,400i,600&display=swap");
+
+// ----- OBIS design tokens -----
+:root {
+  --obis-ink:        #14181f;
+  --obis-ink-soft:   #3a4250;
+  --obis-paper:      #fbfaf7;
+  --obis-paper-tint: #f3f1ec;
+  --obis-rule:       #d8d2c4;
+  --obis-rule-soft:  #ebe6d8;
+  --obis-muted:      #6a6b6e;
+  --obis-accent:     #a8412f;     // warm rust
+  --obis-accent-soft: rgba(168, 65, 47, 0.08);
+
+  --obis-font-sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --obis-font-serif: "IBM Plex Serif", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+  --obis-font-mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --obis-ink:        #ece8de;
+    --obis-ink-soft:   #b6b2a8;
+    --obis-paper:      #181a1f;
+    --obis-paper-tint: #21242b;
+    --obis-rule:       #38404b;
+    --obis-rule-soft:  #2a2f37;
+    --obis-muted:      #9aa0a8;
+    --obis-accent:     #e3917f;
+    --obis-accent-soft: rgba(227, 145, 127, 0.13);
+  }
+}
+
+// Bind hugo-book variables to OBIS tokens
+:root {
+  --body-background:      var(--obis-paper);
+  --body-background-tint: var(--obis-paper-tint);
+  --body-font-color:      var(--obis-ink);
+  --color-link:           var(--obis-accent);
+  --color-visited-link:   var(--obis-accent);
+  --gray-100:             var(--obis-paper-tint);
+  --gray-200:             var(--obis-rule);
+  --gray-500:             var(--obis-muted);
+}
+
+// ----- Base typography -----
+body {
+  font-family: var(--obis-font-sans);
+  font-feature-settings: "ss01", "kern";
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.markdown {
+  line-height: 1.65;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--obis-font-serif);
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    line-height: 1.18;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-top: 0;
+    line-height: 1.08;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin-top: 2.2em;
+    border-top: 1px solid var(--obis-rule-soft);
+    padding-top: 1.2em;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 1.2rem;
+    margin-top: 1.8em;
+    letter-spacing: -0.005em;
+  }
+
+  // First H2 after the abstract / hero shouldn't carry a heavy top border on the landing
+  > h2:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  // Inline code (used for OBIS-NNNN, CAIP-10 ids, field names)
+  code {
+    background: var(--obis-accent-soft);
+    border-color: transparent;
+    color: var(--obis-ink);
+    font-family: var(--obis-font-mono);
+    font-size: 0.86em;
+    padding: 0.08em 0.32em;
+    border-radius: 3px;
+  }
+
+  pre {
+    background: var(--obis-paper-tint);
+    border-color: var(--obis-rule-soft);
+
+    code {
+      background: none;
+      color: inherit;
+      font-size: 0.92em;
+    }
+  }
+
+  a {
+    color: var(--obis-accent);
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 0.06em;
+    text-decoration-color: rgba(168, 65, 47, 0.4);
+    transition: text-decoration-color 120ms ease, text-decoration-thickness 120ms ease;
+
+    &[href]:hover {
+      text-decoration-color: var(--obis-accent);
+      text-decoration-thickness: 0.1em;
+    }
+  }
+
+  strong, b {
+    font-weight: 600;
+    color: var(--obis-ink);
+  }
+
+  hr {
+    background: var(--obis-rule);
+    margin: 2.4em 0;
+  }
+
+  // Long URLs (References section) should wrap rather than overflow
+  li, p {
+    overflow-wrap: anywhere;
+  }
+}
+
+// Sidebar typography
+.book-brand a {
+  font-family: var(--obis-font-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.book-menu-content,
+.book-toc-content {
+  font-family: var(--obis-font-sans);
+  font-size: 0.92rem;
+}
+
+// ----- Landing-page hero -----
+.obis-hero {
+  margin: 0 0 3rem;
+  padding: 0 0 2rem;
+  border-bottom: 1px solid var(--obis-rule);
+
+  .obis-eyebrow {
+    font-family: var(--obis-font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--obis-accent);
+    margin: 0 0 1.2rem;
+  }
+
+  .obis-title {
+    font-family: var(--obis-font-serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    margin: 0;
+    color: var(--obis-ink);
+  }
+
+  .obis-tagline {
+    font-family: var(--obis-font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.4;
+    color: var(--obis-ink-soft);
+    margin: 1.4rem 0 0;
+    max-width: 36em;
+  }
+}
+
+// ----- Focus-area cards -----
+.obis-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0 3rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.obis-focus-card {
+  padding: 1.6rem 1.4rem 1.4rem;
+  background: var(--body-background);
+  border: 1px solid var(--obis-rule);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 160ms ease, transform 160ms ease;
+
+  &:hover {
+    border-color: var(--obis-accent);
+  }
+
+  .obis-mark {
+    font-family: var(--obis-font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--obis-accent);
+    margin: 0 0 0.9rem;
+  }
+
+  h3 {
+    font-family: var(--obis-font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 0.7rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin: 0 0 0.7rem;
+    color: var(--obis-ink-soft);
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  strong { color: var(--obis-ink); }
+}
+
+// ----- Status block (shortcode) -----
+.obis-status-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 2.2rem;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0 2.5rem;
+  background: var(--obis-paper-tint);
+  border: 1px solid var(--obis-rule-soft);
+  border-left: 3px solid var(--obis-accent);
+  border-radius: 3px;
+
+  .obis-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+  }
+
+  .obis-field-label {
+    font-family: var(--obis-font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--obis-muted);
+  }
+
+  .obis-field-value {
+    font-family: var(--obis-font-sans);
+    font-size: 0.94rem;
+    color: var(--obis-ink);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+    gap: 0.6rem;
+
+    .obis-field {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .obis-field-label {
+      min-width: 5.5rem;
+    }
+  }
+}
+
+// ----- Status badges (existing, polished) -----
+.obis-status {
+  display: inline-block;
+  padding: 0.18em 0.6em;
+  font-family: var(--obis-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  white-space: nowrap;
+  line-height: 1.4;
+  border: 1px solid transparent;
+
+  &.obis-status-draft       { background: #fff3cd; color: #6b4f00; border-color: #f0d77a; }
+  &.obis-status-pr          { background: #e0f0ff; color: #0b4f9a; border-color: #99c7f0; }
+  &.obis-status-published   { background: #dff5e2; color: #0d5a23; border-color: #8ed29b; }
+  &.obis-status-superseded  { background: #ececec; color: #555;    border-color: #c8c8c8; }
+  &.obis-status-withdrawn   { background: #f8d7da; color: #76161f; border-color: #f0a3aa; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .obis-status {
+    &.obis-status-draft       { background: rgba(246, 200, 89, 0.16); color: #f6c859; border-color: rgba(246, 200, 89, 0.42); }
+    &.obis-status-pr          { background: rgba(120, 168, 226, 0.16); color: #9bbbe6; border-color: rgba(120, 168, 226, 0.42); }
+    &.obis-status-published   { background: rgba(141, 200, 145, 0.16); color: #9ed1a3; border-color: rgba(141, 200, 145, 0.42); }
+    &.obis-status-superseded  { background: rgba(180, 180, 180, 0.14); color: #c2c2c2; border-color: rgba(180, 180, 180, 0.38); }
+    &.obis-status-withdrawn   { background: rgba(232, 130, 138, 0.16); color: #e8888f; border-color: rgba(232, 130, 138, 0.42); }
+  }
+}
+
+// ----- Responsive table wrapper (render-hook output) -----
+.obis-table-wrap {
+  position: relative;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  border-radius: 3px;
+  border: 1px solid var(--obis-rule-soft);
+
+  // Right-edge gradient that disappears when the table doesn't actually overflow
+  background:
+    linear-gradient(to right, var(--body-background) 30%, rgba(255,255,255,0)),
+    linear-gradient(to right, rgba(0,0,0,0), var(--body-background) 70%) right center / 40px 100% no-repeat,
+    radial-gradient(farthest-side at right, rgba(20, 24, 31, 0.12), rgba(0,0,0,0)) right center / 14px 100% no-repeat;
+  background-attachment: local, local, scroll;
+
+  > table {
+    display: table;
+    width: 100%;
+    min-width: 36rem;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    border-collapse: collapse;
+    font-size: 0.94rem;
+
+    th {
+      font-family: var(--obis-font-sans);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--obis-muted);
+      background: var(--obis-paper-tint);
+      border-bottom: 1px solid var(--obis-rule);
+      padding: 0.7rem 0.9rem;
+      text-align: start;
+    }
+
+    td {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid var(--obis-rule-soft);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    // Zebra rows toned down vs theme default
+    tr:nth-child(2n) td { background: rgba(168, 65, 47, 0.025); }
+  }
+}
+
+// ----- Mobile polish -----
+@media (max-width: 720px) {
+  :root {
+    --font-size: 17px;
+  }
+
+  .markdown {
+    line-height: 1.6;
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.12rem; }
+  }
+
+  // hugo-book's mobile book-header echoes the page H1; on mobile the
+  // page H1 is right below it, which double-titles the view. Keep the
+  // hamburger and TOC toggle, drop the redundant title text.
+  .book-header h3 {
+    display: none;
+  }
+}
+
+// ----- Touch devices: never reveal heading anchors -----
+// The theme's "show anchor on h:hover" rule fires on tap on touch
+// devices and leaves the `#` glyph visible after navigation. On
+// devices without true hover, hide the anchor entirely.
+@media (hover: none) {
+  .markdown h1 a.anchor,
+  .markdown h2 a.anchor,
+  .markdown h3 a.anchor,
+  .markdown h4 a.anchor,
+  .markdown h5 a.anchor,
+  .markdown h6 a.anchor {
+    display: none;
+  }
+}
+
+// ----- Sidebar tightening (keyboard focus) -----
+.book-menu .book-menu-content a:focus-visible,
+.book-toc .book-toc-content a:focus-visible {
+  outline: 2px solid var(--obis-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// ----- Site-wide footer links -----
+.obis-site-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--obis-rule-soft);
+  font-size: 0.86rem;
+  color: var(--obis-muted);
+
+  .obis-site-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+
+    li { margin: 0; padding: 0; }
+
+    a {
+      color: var(--obis-muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--obis-ink);
+        border-bottom-color: var(--obis-rule);
+      }
+    }
+  }
+}
+
+// ----- Per-document license notice (standards docs) -----
+.license-notice {
+  margin: 2.5rem 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--obis-rule-soft);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--obis-muted);
+
+  p { margin: 0; }
+
+  a {
+    color: var(--obis-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--obis-rule);
+    text-underline-offset: 2px;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--obis-ink);
+      text-decoration-color: var(--obis-accent);
+    }
+  }
+}

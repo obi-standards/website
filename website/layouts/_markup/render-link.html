@@ -1,0 +1,15 @@
+{{- /*
+  Project-level render hook for Markdown links.
+  External links (http/https not pointing at this site) open in a new tab.
+  Internal links, anchors, and mailto: links keep default behaviour.
+  Mirrors the hugo-book theme's BookPortableLinks handling for internal refs.
+*/ -}}
+{{- $destination := .Destination -}}
+{{- if .Page.Site.Params.BookPortableLinks -}}
+  {{- $destination = partial "docs/links/portable-link" . -}}
+{{- end -}}
+{{- $isHttp := or (strings.HasPrefix $destination "http://") (strings.HasPrefix $destination "https://") -}}
+{{- $isLocal := and $isHttp (strings.HasPrefix $destination .Page.Site.BaseURL) -}}
+{{- $external := and $isHttp (not $isLocal) -}}
+<a href="{{ $destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /**/ -}}

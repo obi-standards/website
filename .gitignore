@@ -1,0 +1,8 @@
+website/public/
+website/resources/
+website/.hugo_build.lock
+.DS_Store
+
+# Development screenshots / Playwright artifacts (not committed)
+*.png
+.playwright-mcp/

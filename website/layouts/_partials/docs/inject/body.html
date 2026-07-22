@@ -1,0 +1,24 @@
+{{- /*
+  Close the mobile menu when a navigation link is clicked.
+  hugo-book's menu is toggled by a #menu-control checkbox; the theme
+  never unchecks it after a link click, so the menu stays open over
+  the content. We uncheck it on any link click inside .book-menu and
+  on any in-page anchor link in the main article.
+*/ -}}
+<script>
+(function () {
+  function closeMenu() {
+    var menu = document.getElementById('menu-control');
+    if (menu) menu.checked = false;
+    var toc = document.getElementById('toc-control');
+    if (toc) toc.checked = false;
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href]');
+    if (!link) return;
+    if (link.closest('.book-menu, .book-toc, .book-header aside')) {
+      closeMenu();
+    }
+  }, true);
+})();
+</script>

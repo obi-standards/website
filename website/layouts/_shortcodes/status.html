@@ -1,0 +1,52 @@
+{{- /*
+  Status block for an OBIS standards document.
+  Usage:
+    {{< status state="Draft" version="v1-draft" date="2026-05-19"
+               editor="Bernhard Haslhofer"
+               focus="Investigations and forensics" >}}
+  All params are strings. `state` drives the badge class via slugification
+  ("Public Review" -> "obis-status-pr").
+*/ -}}
+{{- $state := .Get "state" -}}
+{{- $version := .Get "version" -}}
+{{- $date := .Get "date" -}}
+{{- $editor := .Get "editor" -}}
+{{- $focus := .Get "focus" -}}
+{{- $stateSlug := lower $state -}}
+{{- $stateClass := "obis-status-draft" -}}
+{{- if eq $stateSlug "public review" -}}{{- $stateClass = "obis-status-pr" -}}{{- end -}}
+{{- if eq $stateSlug "published"     -}}{{- $stateClass = "obis-status-published" -}}{{- end -}}
+{{- if eq $stateSlug "superseded"    -}}{{- $stateClass = "obis-status-superseded" -}}{{- end -}}
+{{- if eq $stateSlug "withdrawn"     -}}{{- $stateClass = "obis-status-withdrawn" -}}{{- end -}}
+<div class="obis-status-block">
+  {{- with $state }}
+  <div class="obis-field">
+    <span class="obis-field-label">Status</span>
+    <span class="obis-field-value"><span class="obis-status {{ $stateClass }}">{{ . }}</span></span>
+  </div>
+  {{- end }}
+  {{- with $version }}
+  <div class="obis-field">
+    <span class="obis-field-label">Version</span>
+    <span class="obis-field-value">{{ . }}</span>
+  </div>
+  {{- end }}
+  {{- with $date }}
+  <div class="obis-field">
+    <span class="obis-field-label">Date</span>
+    <span class="obis-field-value">{{ . }}</span>
+  </div>
+  {{- end }}
+  {{- with $editor }}
+  <div class="obis-field">
+    <span class="obis-field-label">Editor</span>
+    <span class="obis-field-value">{{ . }}</span>
+  </div>
+  {{- end }}
+  {{- with $focus }}
+  <div class="obis-field">
+    <span class="obis-field-label">Focus</span>
+    <span class="obis-field-value">{{ . }}</span>
+  </div>
+  {{- end }}
+</div>

@@ -1,0 +1,9 @@
+{{- /*
+  A focus-area card with a typographic mark (§ I/II/III) above the heading.
+  Inner content is markdown.
+*/ -}}
+<article class="obis-focus-card">
+  {{- with .Get "mark" }}<p class="obis-mark">{{ . }}</p>{{ end }}
+  {{- with .Get "title" }}<h3>{{ . }}</h3>{{ end }}
+  {{ .Inner | .Page.RenderString }}
+</article>

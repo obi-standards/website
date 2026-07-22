@@ -1,0 +1,54 @@
+baseURL = 'https://obistandards.org/'
+languageCode = 'en-us'
+title = 'Open Blockchain Intelligence Standards'
+theme = 'hugo-book'
+
+# OBIS is a standards body; default to permissive indexing.
+enableRobotsTXT = true
+enableGitInfo = false
+
+[params]
+  BookTheme = 'auto'
+  BookToC = true
+  BookLogo = ''
+  BookSection = 'standards'
+  BookRepo = 'https://github.com/obi-standards/website'
+  BookEditPath = 'edit/main/content'
+  BookSearch = false
+  BookComments = false
+  BookPortableLinks = true
+  BookServiceWorker = false
+  description = 'A bottom-up community effort to develop open standards for blockchain intelligence.'
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[menu]
+  [[menu.before]]
+    name = 'About'
+    url = '/#about'
+    weight = 10
+  [[menu.before]]
+    name = 'Focus areas'
+    url = '/#focus-areas'
+    weight = 20
+  [[menu.before]]
+    name = 'Relationship to existing work'
+    url = '/#relationship-to-existing-work'
+    weight = 25
+  [[menu.before]]
+    name = 'Process'
+    url = '/#process'
+    weight = 30
+  [[menu.before]]
+    name = 'Get involved'
+    url = '/#get-involved'
+    weight = 40
+  [[menu.after]]
+    name = 'GitHub'
+    url = 'https://github.com/obi-standards'
+    weight = 10
