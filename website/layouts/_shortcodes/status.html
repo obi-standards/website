@@ -12,6 +12,10 @@
 {{- $date := .Get "date" -}}
 {{- $editor := .Get "editor" -}}
 {{- $focus := .Get "focus" -}}
+{{- /* Discussion link: taken from the page's discussions-to front-matter
+       field (single source of truth); placeholder URLs are not rendered. */ -}}
+{{- $discussion := or (.Get "discussion") (index .Page.Params "discussions-to") -}}
+{{- if and $discussion (in $discussion "TBD") -}}{{- $discussion = "" -}}{{- end -}}
 {{- $stateSlug := lower $state -}}
 {{- $stateClass := "obis-status-draft" -}}
 {{- if eq $stateSlug "public review" -}}{{- $stateClass = "obis-status-pr" -}}{{- end -}}
@@ -47,6 +51,12 @@
   <div class="obis-field">
     <span class="obis-field-label">Focus</span>
     <span class="obis-field-value">{{ . }}</span>
+  </div>
+  {{- end }}
+  {{- with $discussion }}
+  <div class="obis-field">
+    <span class="obis-field-label">Discussion</span>
+    <span class="obis-field-value"><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . | replaceRE "^https://github\\.com/" "" }}</a></span>
   </div>
   {{- end }}
 </div>
