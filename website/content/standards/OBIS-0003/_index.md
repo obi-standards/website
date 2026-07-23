@@ -16,13 +16,13 @@ discussions-to: "https://github.com/orgs/obi-standards/discussions/3"
 
 ## Abstract
 
-Attribution, the association of a pseudonymous blockchain address with real-world context, is the core analytical activity in investigations, supervision, and research on blockchain data, but each platform represents the same underlying claim in its own format, so attributions produced in one ecosystem cannot be verified or reused in another. This document aims to make attribution claims portable across organisations and tools. It specifies a data model and exchange format for attribution tags: self-contained records that associate one blockchain address with a human-readable label, optionally refined by actor and abuse types, each carrying an attributor and human-readable evidence. The format is deliberately minimal; bundling, revocation, and machine-processable provenance are deferred to future revisions.
+Attribution, the association of a pseudonymous blockchain address with real-world context, is the core analytical activity in investigations, supervision, and research on blockchain data, but each platform represents the same underlying claim in its own format, so attributions produced in one ecosystem cannot be verified or reused in another. This document aims to make attribution claims portable across organisations and tools. It specifies a data model and exchange format for attribution tags: self-contained records that associate one blockchain address with a human-readable label, optionally refined by actor and abuse types, each carrying an attributor and human-readable evidence. The format is deliberately minimal: bundling, revocation, and machine-processable provenance are deferred to future revisions.
 
 ## 1. Introduction
 
 Attribution is the core analytical activity in investigations, supervision, and research on blockchain data. Each platform working in this space today maintains its own representation of the same underlying claim. Identical concepts carry different names, and attributions produced in one ecosystem are difficult to verify or reuse in another.
 
-OBIS-0003 specifies a minimal exchange format for attribution claims: which address, what real-world context, who asserts it, and on what evidence. A claim need not name an actor; a label may simply describe the role observed, refined where possible by actor and abuse types. The format is designed for exchange between organisations that maintain richer internal representations.
+OBIS-0003 specifies a minimal exchange format for attribution claims: which address, what real-world context, who asserts it, and on what evidence. A claim need not name an actor. A label may simply describe the role observed, refined where possible by actor and abuse types. The format is designed for exchange between organisations that maintain richer internal representations.
 
 This document does not prescribe how attributions are produced. It specifies how they are represented when exchanged.
 
@@ -38,7 +38,7 @@ OBIS-0003 does not cover:
 
 - the controlled vocabularies for actor and abuse types (specified in [OBIS-0002]({{< relref "OBIS-0002" >}}));
 - the production of attributions (heuristics, clustering, investigative method);
-- transmittal protocols (push, pull, query); only the data format is normative.
+- transmittal protocols (push, pull, query). Only the data format is normative.
 
 ## 3. Terminology
 
@@ -54,7 +54,7 @@ The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** ar
 
 OBIS-0003 commits to the following principles:
 
-1. **Explicit chain identification.** Every tag names the chain its address lives on, alongside the address in the chain's native encoding. Nothing is inferred from address syntax; disambiguation across chains is a first-class concern.
+1. **Explicit chain identification.** Every tag names the chain its address lives on, alongside the address in the chain's native encoding. Nothing is inferred from address syntax, and disambiguation across chains is a first-class concern.
 2. **Controlled vocabularies for categorisation.** Actor and abuse classifications are drawn from the OBIS-0002 concept schemes, not free-form text. A tag MAY carry several concepts, top-level or narrower, including `x-` extension concepts (OBIS-0002 §7).
 3. **Human-readable evidence.** Every tag carries evidence that a human can assess: each evidence item has a description and optionally a URI pointing to a public source or a manifestation (e.g., a case file or screenshot). Machine-processable provenance chains are deferred (§11).
 4. **Address-scoped tags.** A tag provides context for exactly one address. Any extension of an attribution beyond the named address (e.g., via clustering) is the consumer's responsibility and is out of scope.
@@ -87,7 +87,7 @@ A tag applies to exactly the address named in its `address` field. Any propagati
 
 ## 7. Serialization
 
-The canonical exchange serialization is **JSON**. The exchange unit is a JSON array of tag objects; a single tag is exchanged as an array of one. Each tag is self-contained; there is no shared header and no cross-tag inheritance.
+The canonical exchange serialization is **JSON**. The exchange unit is a JSON array of tag objects, and a single tag is exchanged as an array of one. Each tag is self-contained, with no shared header and no cross-tag inheritance.
 
 Example:
 
@@ -160,7 +160,7 @@ Conformance does not require an implementation to produce tags. A read-only cons
 
 ### 10.1 GraphSense TagPacks
 
-GraphSense [TagPacks](https://github.com/graphsense/graphsense-tagpacks/wiki/GraphSense-TagPacks) are the most widely used open format for sharing attribution data in the investigations community. A TagPack is a YAML file containing a header (`title`, `creator`, default `currency`, default `source`, etc.) and a list of tag records (`address`, `label`, `source`, optional `category`, `abuse`, `confidence`), with header fields cascading as defaults to contained tags. OBIS-0003 adopts the tag idea and simplifies the rest: bundles and header inheritance are deferred (§11), the chain is named explicitly rather than by currency shorthand, and an evidence list replaces the single `source` field. It does not adopt the TagPack `confidence` field; assessing the credibility of a tag is the consumer's responsibility, informed by the evidence carried with the tag.
+GraphSense [TagPacks](https://github.com/graphsense/graphsense-tagpacks/wiki/GraphSense-TagPacks) are the most widely used open format for sharing attribution data in the investigations community. A TagPack is a YAML file containing a header (`title`, `creator`, default `currency`, default `source`, etc.) and a list of tag records (`address`, `label`, `source`, optional `category`, `abuse`, `confidence`), with header fields cascading as defaults to contained tags. OBIS-0003 adopts the tag idea and simplifies the rest: bundles and header inheritance are deferred (§11), the chain is named explicitly rather than by currency shorthand, and an evidence list replaces the single `source` field. It does not adopt the TagPack `confidence` field. Assessing the credibility of a tag is the consumer's responsibility, informed by the evidence carried with the tag.
 
 ### 10.2 INTERPOL DW-VA-Taxonomy
 
@@ -176,14 +176,14 @@ The [FATF Recommendation 16](https://www.fatf-gafi.org/) (the "Travel Rule") and
 
 ### 10.5 Closed commercial formats
 
-The major commercial blockchain analytics vendors (Chainalysis, TRM Labs, Elliptic) each maintain proprietary attribution-tagging formats. These are not publicly redistributable and vary in field structure. They are noted because operational interoperability with these vendors requires bidirectional mapping. They cannot serve as the basis for an open standard.
+The major commercial blockchain analytics vendors (Chainalysis, TRM Labs, Elliptic) each maintain proprietary attribution-tagging formats. These are not publicly redistributable and vary in field structure. They are noted because operational interoperability with these vendors requires bidirectional mapping, but they cannot serve as the basis for an open standard.
 
 ## 11. Open issues
 
-- **Tag bundles.** Bulk exchange with shared header metadata and defaults inheritance is deferred; until then, the exchange unit is an array of self-contained tags (§7).
-- **Custom fields.** An extension mechanism allowing tool providers to attach custom fields to a tag (e.g., under a reserved prefix or a dedicated extensions object) without breaking interoperability is deferred; until then, receivers SHOULD ignore unknown fields.
+- **Tag bundles.** Bulk exchange with shared header metadata and defaults inheritance is deferred. Until then, the exchange unit is an array of self-contained tags (§7).
+- **Custom fields.** An extension mechanism allowing tool providers to attach custom fields to a tag (e.g., under a reserved prefix or a dedicated extensions object) without breaking interoperability is deferred. Until then, receivers SHOULD ignore unknown fields.
 - **Revocation and versioning.** Correcting or withdrawing exchanged tags (revocation records, supersession of earlier releases) is deferred to a future revision.
-- **Chain identifier registry.** A shared registry of chain identifiers, including testnets and forks, is deferred; community-curated lists serve in the interim (§5).
+- **Chain identifier registry.** A shared registry of chain identifiers, including testnets and forks, is deferred. Community-curated lists serve in the interim (§5).
 - **Structured provenance.** Machine-processable lineage (derivation chains between tags, a normative PROV-O / JSON-LD `@context` mapping) is deferred.
 - **Signing.** Cryptographic signing of exchanged tags for authenticity and non-repudiation is deferred.
 
