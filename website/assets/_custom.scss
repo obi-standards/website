@@ -192,15 +192,11 @@ body {
 
 // ----- Focus-area cards -----
 .obis-focus-grid {
+  // Cards are stacked below each other at every width.
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   margin: 2rem 0 3rem;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
 }
 
 .obis-focus-card {
