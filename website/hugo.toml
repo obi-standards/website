@@ -18,7 +18,7 @@ enableGitInfo = false
   BookComments = false
   BookPortableLinks = true
   BookServiceWorker = false
-  description = 'A bottom-up community effort to develop open standards for blockchain intelligence.'
+  description = 'An open community effort developing vendor-neutral standards for blockchain intelligence.'
 
 [markup]
   [markup.goldmark.renderer]

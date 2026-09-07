@@ -12,7 +12,7 @@ OBIS (Open Blockchain Intelligence Standards) is a community effort to develop o
 
 ## Status
 
-OBIS is currently an unincorporated open community project. Incorporation as a non-profit standards organisation is planned and will be undertaken once the early body of work and contributor base warrant it. Until then, the project operates without legal personhood: contributions are made directly to the public specifications under the licenses described on the [License](/about/license/) page, and the project holds no funds, assets, or contractual obligations.
+OBIS is currently an unincorporated open community project. Incorporation as a non-profit standards organisation is planned and will be undertaken once the early body of work and contributor base warrant it. Until then, the project operates without legal personhood: contributions are made directly to the public specifications under the licences described on the [Licence](/about/license/) page, and the project holds no funds, assets, or contractual obligations.
 
 ## What OBIS is not
 

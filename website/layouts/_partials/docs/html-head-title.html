@@ -1,0 +1,7 @@
+{{- /*
+  Project override of hugo-book's html-head-title partial.
+  The theme emits "<page title> • <site title>"; on the home page the two are
+  identical, so the site title is emitted once when they match.
+*/ -}}
+{{- $title := partial "docs/title" . -}}
+{{- if and $title (ne $title .Site.Title) }}{{ $title }} • {{ end }}{{ .Site.Title -}}
