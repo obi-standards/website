@@ -92,7 +92,7 @@ The full process is specified in [OBIS-0001: OBIS Document Lifecycle]({{< relref
 
 Anyone interested in the work is welcome to follow it, comment on drafts, or contribute.
 
-- **Drafts and discussion:** All specifications are developed in the [docs repository](https://github.com/obi-standards/docs), and each draft has a thread in [GitHub Discussions](https://github.com/orgs/obi-standards/discussions), the canonical venue for comments during Public Review. Anyone with a GitHub account can join a discussion, open issues, and submit pull requests. No application or membership is required.
+- **Drafts and discussion:** All specifications are developed in the [docs repository](https://github.com/obi-standards/docs), and each draft has a thread in [GitHub Discussions](https://github.com/orgs/obi-standards/discussions), the canonical venue for comments during Public Review. Anyone with a GitHub account can join a discussion, open issues, and submit pull requests. No application or membership is required. Ideas for new work items go to the [Proposals](https://github.com/orgs/obi-standards/discussions/categories/proposals) category, transitions to Public Review are announced under [Announcements](https://github.com/orgs/obi-standards/discussions/categories/announcements), and [How to participate in OBIS](https://github.com/orgs/obi-standards/discussions/5) gives the full channel map.
 
 - **Email:** <info@obistandards.org>. General correspondence about the project.
 

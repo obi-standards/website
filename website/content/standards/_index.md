@@ -23,4 +23,4 @@ The catalog is organised around the three initial focus areas (investigations an
 
 Status badges: <span class="obis-status obis-status-draft">Draft</span> &middot; <span class="obis-status obis-status-pr">Public Review</span> &middot; <span class="obis-status obis-status-published">Published</span> &middot; <span class="obis-status obis-status-superseded">Superseded</span> &middot; <span class="obis-status obis-status-withdrawn">Withdrawn</span>
 
-Source repository: [github.com/obi-standards/docs](https://github.com/obi-standards/docs).
+Source repository: [github.com/obi-standards/docs](https://github.com/obi-standards/docs). Comments on any document go to its review thread, linked from the *Discussion* field in the document's status block and collected under [Document review](https://github.com/orgs/obi-standards/discussions/categories/document-review) in GitHub Discussions.

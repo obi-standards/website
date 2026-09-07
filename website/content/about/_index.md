@@ -20,10 +20,12 @@ OBIS is not a certification scheme, an industry lobby, or a vendor consortium. I
 
 ## How OBIS operates
 
-Drafts are developed in the open on GitHub at [github.com/obi-standards](https://github.com/obi-standards). The lifecycle of an OBIS document is specified in [OBIS-0001](/standards/obis-0001/). There is no chartered membership, no application to join, and no fee. Anyone may follow the work, comment on drafts, or contribute.
+Drafts are developed in the open on GitHub at [github.com/obi-standards](https://github.com/obi-standards). The lifecycle of an OBIS document is specified in [OBIS-0001](/standards/obis-0001/). There is no chartered membership, no application to join, and no fee. Anyone may follow the work, comment on drafts in [GitHub Discussions](https://github.com/orgs/obi-standards/discussions), or contribute.
 
 ## Contact
 
 General correspondence: <info@obistandards.org>
+
+Discussion: [github.com/orgs/obi-standards/discussions](https://github.com/orgs/obi-standards/discussions)
 
 Source repositories: [github.com/obi-standards](https://github.com/obi-standards)
